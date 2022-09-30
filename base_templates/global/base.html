@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<link rel="stylesheet" href="recipes/css/styles.css">
+<link rel="stylesheet" href="jogo/css/styles.css">
 <head>
-    {% include 'recipes/partials/head.html' %}
-    <title>{% block title %}{% endblock title %}RECIPES</title>
+    {% include 'jogos/partials/head.html' %}
+    <title>{% block title %}{% endblock title %}jogos</title>
 </head>
 <body>
-    {% include 'recipes/partials/header.html' %}
-    {% include 'recipes/partials/search.html' %}
+    {% include 'jogos/partials/header.html' %}
+    {% include 'jogos/partials/search.html' %}
     <main class= 'main-content-container'>
         {% block content %}{% endblock content %}
     </main>
 
-    {% include 'recipes/partials/footer.html' %}              
+    {% include 'jogos/partials/footer.html' %}              
 </body>
 
 </html>

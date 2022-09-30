@@ -1,0 +1,71 @@
+<div class="jogo jogo-list-item">
+    {% if jogos.cover %}
+        <div class="jogo-cover">
+            <a href="{% url 'jogos:jogos' jogos.id %}">
+                <img src="{{ jogos.cover.url }} " alt="Temporário">
+            </a>
+        </div>
+    {% endif %}
+    <div class="jogo-title-container">
+        <h2 class="jogo-title">
+            <a href="{% url 'jogos:jogos' jogos.id %}">
+                {{ jogos.title }}
+            </a>
+        </h2>
+    </div>
+
+    <div class="jogo-author">
+        <span class="jogo-author-item">
+            <i class="fas fa-user"></i>
+            {% if jogos.author.first_name %}
+                {{ jogos.author.first_name }} {{ jogos.author.last_name }}
+            {% else %}
+                {{jogos.author.username}}
+            {% endif %}
+        </span>
+        <span class="jogo-author-item">
+            <i class="fas fa-calendar-alt"></i>
+            {{ jogos.created_at}}
+        </span>
+        <span class="jogo-author-item">
+            <a href="{% url 'jogos:category' jogos.category.id  %}">
+                <i class="fas fa-layer-group"></i>
+                <span>{{ jogos.category.name }}</span>
+            </a>
+        </span>
+    </div>
+
+    <div class="jogo-content">
+        <p>{{jogos.description}}</p>
+    </div>
+
+    <div class="jogo-meta-container">
+        <div class="jogo-meta jogo-preparation">
+            <h3 class="jogo-meta-title"><i class="fa-solid fa-diamond"></i> Modo de jogo</h3>
+            <div class="jogo-meta-text">
+                {{jogos.preparation_time}} {{jogos.preparation_time_unit}}
+            </div>
+        </div>
+        <div class="jogo-meta jogo-servings">
+            <h3 class="jogo-meta-title"><i class="fa-solid fa-trophy"></i> Horas de gameplay</h3>
+            <div class="jogo-meta-text">
+                {{jogos.servings}} {{jogos.serving_unit}}
+            </div>
+        </div>
+    </div>
+    {% if is_datail_page is not True %}
+        <footer class="jogo-footer">
+            <a class="jogo-read-more button button-dark button-full-width" href="{% url 'jogos:jogos' jogos.id %}">
+                <i class="fas fa-eye"></i>
+                <span>ver mais...</span>
+            </a>
+        </footer>
+    {% endif %}
+
+    {% if is_datail_page is True %}
+        <div class="preparatio-steps">
+            {{jogos.preparation_steps|linebreaksbr }}
+        </div>
+    {% endif %}
+
+</div>

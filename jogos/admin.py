@@ -1,14 +1,14 @@
 from django.contrib import admin
 
-from .models import Category, Recipe
+from .models import Category, Jogos
 
 
 class CategoryAdmin(admin.ModelAdmin):
     ...
 
 
-@admin.register(Recipe)
-class RecipeAdmin(admin.ModelAdmin):
+@admin.register(Jogos)
+class JogosAdmin(admin.ModelAdmin):
     ...
 
 
