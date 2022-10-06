@@ -2,9 +2,13 @@
 {% extends 'global/base.html' %}
 {% block title %}HOME ♦{% endblock title %}
 {% block content %}
-    <div class="main-content main-content-list container">
-        {% for jogos in jogos  %}
-            {% include 'jogos/partials/jogos.html' %}
-        {% endfor %}
-    </div>
+<div class="main-content main-content-list container">
+{% for jogos in jogos  %}
+        {% include 'jogos/partials/jogos.html' %}
+{% empty %}
+<div class= "center m-y" >
+    <h1>NO GAMES FOUND HERE</h1>
+</div>
+{% endfor %}
+</div>
 {% endblock content %}

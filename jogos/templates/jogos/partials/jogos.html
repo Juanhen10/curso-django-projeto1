@@ -15,24 +15,32 @@
     </div>
 
     <div class="jogo-author">
+        
         <span class="jogo-author-item">
             <i class="fas fa-user"></i>
-            {% if jogos.author.first_name %}
-                {{ jogos.author.first_name }} {{ jogos.author.last_name }}
+            {% if jogos.author is not None %}
+                {% if jogos.author.first_name %}
+                    {{ jogos.author.first_name }} {{ jogos.author.last_name }}
+                {% else %}
+                    {{jogos.author.username}}
+                {% endif %}
             {% else %}
-                {{jogos.author.username}}
+                desconhecido
             {% endif %}
         </span>
+            
         <span class="jogo-author-item">
             <i class="fas fa-calendar-alt"></i>
             {{ jogos.created_at}}
         </span>
+        {% if jogos.category is not None %}
         <span class="jogo-author-item">
             <a href="{% url 'jogos:category' jogos.category.id  %}">
                 <i class="fas fa-layer-group"></i>
                 <span>{{ jogos.category.name }}</span>
             </a>
         </span>
+        {% endif %}
     </div>
 
     <div class="jogo-content">
@@ -64,7 +72,11 @@
 
     {% if is_datail_page is True %}
         <div class="preparatio-steps">
-            {{jogos.preparation_steps|linebreaksbr }}
+            {% if  jogos.preparation_steps_is_html is True %}
+                {{jogos.preparation_steps|safe }}
+            {% else %}
+                {{jogos.preparation_steps|linebreaksbr }}
+            {% endif %}
         </div>
     {% endif %}
 

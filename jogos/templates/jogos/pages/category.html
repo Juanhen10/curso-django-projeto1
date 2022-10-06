@@ -1,0 +1,10 @@
+
+{% extends 'global/base.html' %}
+{% block title %} {{ title }}{% endblock title %}
+{% block content %}
+    <div class="main-content main-content-list container">
+        {% for jogos in jogos  %}
+            {% include 'jogos/partials/jogos.html' %}
+        {% endfor %}
+    </div>
+{% endblock content %}

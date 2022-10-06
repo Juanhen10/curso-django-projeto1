@@ -26,10 +26,10 @@ class Jogos(models.Model):
     is_published = models.BooleanField(default=False)
     cover = models.ImageField(upload_to='jogos/covers/%Y/%m/%d/', blank= True, default = '')
     category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True
+        Category, on_delete=models.SET_NULL, null=True, blank=True, default= None
     )
     author = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True
+        User, on_delete=models.SET_NULL, null=True, blank= True, default = None
     )
 
     def __str__(self):
