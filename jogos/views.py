@@ -16,7 +16,7 @@ def home(request):
     })
 
 
-def category(request, category_id):
+def category_view(request, category_id):
     jogos = get_list_or_404(Jogos.objects.filter(category__id=category_id, 
     is_published=True,
     ).order_by('-id'))

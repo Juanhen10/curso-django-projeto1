@@ -63,7 +63,7 @@
     </div>
     {% if is_datail_page is not True %}
         <footer class="jogo-footer">
-            <a class="jogo-read-more button button-dark button-full-width" href="{% url 'jogos:jogos' jogos.id %}">
+            <a class="jogo-read-more button button-dark button-full-width" href="{% url jogos:jogos jogos.id %}">
                 <i class="fas fa-eye"></i>
                 <span>ver mais...</span>
             </a>
